@@ -1,5 +1,10 @@
-package main.java.com.leon.mybatis.entity;
+package com.leon.mybatis.entity;
 
+/**
+ * ���ݿ��ʵ����
+ * @author leonj
+ *
+ */
 public class User {
 	private int id;
 	private String name;
