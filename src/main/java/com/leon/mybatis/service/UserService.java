@@ -1,4 +1,4 @@
-package main.java.com.leon.mybatis.service;
+package com.leon.mybatis.service;
 
 import java.util.List;
 

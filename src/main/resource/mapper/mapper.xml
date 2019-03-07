@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.leon.mybatis.mapper.UserMapper">
+	<!-- 定义一个resultMap，作为公共的返回数据结构，有需要的可以引用 -->
+	<resultMap id="usermap" type="com.leon.mybatis.entity.User">
+		<id property="id" column="id"/> <!-- property是本地定义的名称，column是数据库里表的列名 -->
+		<result property="name" column="name"/>
+	</resultMap>
+	
+	<!-- 用resultMap的方式定义数据返回格式，需要定义一个id为usermap的节点 -->
+	<select id="selectAllUser" resultMap="usermap">
+		select * from user
+	</select>
+	
+	<!-- 如果查询有参数，需要用parameterType指定参数类型 -->
+	<!-- 也可用resultType方式定义数据返回格式，直接用类的路径就行 -->
+	<select id="selectUserById" parameterType="int" resultType="com.leon.mybatis.entity.User">
+		select * from user where id=#{id}
+	</select>
+	
+	<!-- resultType如果嫌包路径太长，可以直接使用类名，但需要在sqlSessionFactory的配置中增加typeAliasesPackage参数 -->
+	<!-- <select id="selectAllUser" resultType="User">
+		select * from user
+	</select> -->
+</mapper>
